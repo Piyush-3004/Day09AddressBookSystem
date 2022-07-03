@@ -13,6 +13,22 @@ public class AddressBook {
 		AddressBook.addNewContact(contactDetails);
 		AddressBook.viewContact(contactDetails);
 		AddressBook.editContact(contactDetails);
+		AddressBook.deleteContact(contactDetails);
+
+	}
+
+	static void deleteContact(ArrayList<Contact> contactDetails) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter name to delete the info");
+		String name = scanner.next();
+		for (int i = 0; i < contactDetails.size(); i++) {
+			System.out.println(contactDetails.get(i).first_Name);
+
+			if (contactDetails.get(i).first_Name.equals(name)) {
+				contactDetails.remove(contactDetails.get(i));
+			}
+		}
+
 	}
 
 	static void editContact(ArrayList<Contact> contactDetails) {
