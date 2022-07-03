@@ -6,12 +6,63 @@ import java.util.Scanner;
 public class AddressBook {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		ArrayList<Contact> contactDetails = new ArrayList<Contact>();
 
 		AddressBook.addContact(contactDetails);
 		AddressBook.addNewContact(contactDetails);
-		AddressBook.viewEmp(contactDetails);
+		AddressBook.viewContact(contactDetails);
+		AddressBook.editContact(contactDetails);
+	}
+
+	static void editContact(ArrayList<Contact> contactDetails) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter name to update the info");
+		String name = scanner.next();
+		for (int i = 0; i < contactDetails.size(); i++) {
+			System.out.println(contactDetails.get(i).first_Name);
+
+			if (contactDetails.get(i).first_Name.equals(name)) {
+				System.out.println(
+						"Enter 1 to change firstname , 2 to chnage lastname , 3 to change address , 4 to change City \n 5 tochange state, 6 to change zipcode , 7 to change obilenumber , 8 to change Email.");
+				int op = scanner.nextInt();
+				switch (op) {
+				case 1:
+					System.out.println("Enter new name");
+					String newName = scanner.next();
+					contactDetails.get(i).first_Name = newName;
+					break;
+				case 2:
+					String newLastName = scanner.next();
+					contactDetails.get(i).last_Name = newLastName;
+					break;
+				case 3:
+					String newAddress = scanner.next();
+					contactDetails.get(i).address = newAddress;
+					break;
+				case 4:
+					String newCity = scanner.next();
+					contactDetails.get(i).city = newCity;
+					break;
+				case 5:
+					String newState = scanner.next();
+					contactDetails.get(i).state = newState;
+					break;
+				case 6:
+					int newZipCode = scanner.nextInt();
+					contactDetails.get(i).zip_Code = newZipCode;
+					break;
+				case 7:
+					int newPhoneNumber = scanner.nextInt();
+					contactDetails.get(i).phone_Number = newPhoneNumber;
+					break;
+				case 8:
+					String newEmail = scanner.next();
+					contactDetails.get(i).email = newEmail;
+					break;
+				}
+			}
+		}
 	}
 
 	static void addNewContact(ArrayList<Contact> contactDetails) {
@@ -44,7 +95,7 @@ public class AddressBook {
 		contactDetails.add(add1);
 	}
 
-	static void viewEmp(ArrayList<Contact> contactDetails) {
+	static void viewContact(ArrayList<Contact> contactDetails) {
 		for (int i = 0; i < contactDetails.size(); i++) {
 			System.out.println(contactDetails.get(i));
 		}
